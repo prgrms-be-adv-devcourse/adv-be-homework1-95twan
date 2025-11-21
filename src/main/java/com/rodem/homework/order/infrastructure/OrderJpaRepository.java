@@ -1,6 +1,6 @@
-package com.rodem.homework.repository;
+package com.rodem.homework.order.infrastructure;
 
-import com.rodem.homework.entity.PurchaseOrder;
+import com.rodem.homework.order.domain.PurchaseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

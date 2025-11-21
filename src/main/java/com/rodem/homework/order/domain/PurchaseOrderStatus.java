@@ -1,4 +1,4 @@
-package com.rodem.homework.entity;
+package com.rodem.homework.order.domain;
 
 public enum PurchaseOrderStatus {
     CREATED,

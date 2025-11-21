@@ -1,4 +1,6 @@
-package com.rodem.homework.dto;
+package com.rodem.homework.order.presentation.dto;
+
+import com.rodem.homework.order.application.dto.OrderCommand;
 
 import java.math.BigDecimal;
 import java.util.UUID;

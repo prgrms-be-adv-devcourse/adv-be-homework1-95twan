@@ -1,7 +1,7 @@
-package com.rodem.homework.dto;
+package com.rodem.homework.order.application.dto;
 
-import com.rodem.homework.entity.PurchaseOrder;
-import com.rodem.homework.entity.PurchaseOrderStatus;
+import com.rodem.homework.order.domain.PurchaseOrder;
+import com.rodem.homework.order.domain.PurchaseOrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

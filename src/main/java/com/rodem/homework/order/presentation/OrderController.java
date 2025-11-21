@@ -1,10 +1,10 @@
-package com.rodem.homework.controller;
+package com.rodem.homework.order.presentation;
 
 import com.rodem.homework.common.ResponseEntity;
-import com.rodem.homework.dto.OrderInfo;
-import com.rodem.homework.dto.OrderRequest;
-import com.rodem.homework.entity.PurchaseOrderStatus;
-import com.rodem.homework.service.OrderService;
+import com.rodem.homework.order.application.dto.OrderInfo;
+import com.rodem.homework.order.presentation.dto.OrderRequest;
+import com.rodem.homework.order.domain.PurchaseOrderStatus;
+import com.rodem.homework.order.application.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

@@ -1,11 +1,11 @@
-package com.rodem.homework.service;
+package com.rodem.homework.order.application;
 
 import com.rodem.homework.common.ResponseEntity;
-import com.rodem.homework.entity.PurchaseOrder;
-import com.rodem.homework.dto.OrderCommand;
-import com.rodem.homework.dto.OrderInfo;
-import com.rodem.homework.entity.PurchaseOrderStatus;
-import com.rodem.homework.repository.OrderJpaRepository;
+import com.rodem.homework.order.application.dto.OrderCommand;
+import com.rodem.homework.order.application.dto.OrderInfo;
+import com.rodem.homework.order.domain.OrderRepository;
+import com.rodem.homework.order.domain.PurchaseOrder;
+import com.rodem.homework.order.domain.PurchaseOrderStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,10 +19,10 @@ import java.util.UUID;
 @Service
 public class OrderService {
 
-    private final OrderJpaRepository orderJpaRepository;
+    private final OrderRepository orderRepository;
 
     public ResponseEntity<List<OrderInfo>> findAll(Pageable pageable) {
-        Page<PurchaseOrder> page = orderJpaRepository.findAll(pageable);
+        Page<PurchaseOrder> page = orderRepository.findAll(pageable);
         List<OrderInfo> orders = page.stream().map(OrderInfo::from).toList();
         return new ResponseEntity<>(HttpStatus.OK.value(), orders, page.getTotalElements());
     }
@@ -35,14 +35,14 @@ public class OrderService {
                 command.amount()
         );
 
-        PurchaseOrder saved = orderJpaRepository.save(purchaseOrder);
+        PurchaseOrder saved = orderRepository.save(purchaseOrder);
         return new ResponseEntity<>(HttpStatus.CREATED.value(), OrderInfo.from(saved), 1);
     }
 
     public ResponseEntity<OrderInfo> statusChange(UUID id, PurchaseOrderStatus status) {
-        PurchaseOrder order = orderJpaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Order not found: " + id));
+        PurchaseOrder order = orderRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Order not found: " + id));
         order.setStatus(status);
-        orderJpaRepository.save(order);
+        orderRepository.save(order);
         return new ResponseEntity<>(HttpStatus.OK.value(), OrderInfo.from(order), 1);
     }
 }

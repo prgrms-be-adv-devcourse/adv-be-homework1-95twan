@@ -1,4 +1,4 @@
-package com.rodem.homework.dto;
+package com.rodem.homework.order.application.dto;
 
 import java.math.BigDecimal;
 import java.util.UUID;

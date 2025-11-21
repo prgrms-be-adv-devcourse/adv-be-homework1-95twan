@@ -1,4 +1,4 @@
-package com.rodem.homework.entity;
+package com.rodem.homework.order.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
