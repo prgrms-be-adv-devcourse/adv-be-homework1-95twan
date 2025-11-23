@@ -45,4 +45,14 @@ public class OrderService {
         orderRepository.save(order);
         return new ResponseEntity<>(HttpStatus.OK.value(), OrderInfo.from(order), 1);
     }
+
+    public PurchaseOrder findById(String id) {
+        UUID orderId = UUID.fromString(id);
+        return orderRepository.findById(orderId).orElseThrow(() -> new IllegalArgumentException("Order not found: " + id));
+    }
+
+    public void markPaid(PurchaseOrder order) {
+        order.markPaid();
+        orderRepository.save(order);
+    }
 }
