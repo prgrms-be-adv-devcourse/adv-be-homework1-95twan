@@ -44,7 +44,7 @@ public class PaymentService {
     }
 
     public ResponseEntity<PaymentInfo> confirm(PaymentCommand command) {
-        PurchaseOrder order = orderService.findById(tossPayment.orderId());
+        PurchaseOrder order = orderService.findById(command.orderId());
 
         TossPaymentResponse tossPayment = tossPaymentClient.confirm(command);
 
